@@ -1,0 +1,227 @@
+# src/safeway_guardian/elements/wood_vitality.py
+"""
+🌳 WOOD ELEMENT - Vitality & Growth System
+Liver/Gallbladder function, detoxification, vitality analysis
+"""
+
+class WoodVitalitySystem:
+    """🌳 WOOD: Vitality, growth, and detoxification system analysis"""
+    
+    def __init__(self):
+        self.vitality_metrics = ['energy_levels', 'sleep_quality', 'stress_resilience']
+        self.detox_indicators = ['liver_enzymes', 'bilirubin', 'toxin_exposure']
+        self.growth_factors = ['cell_regeneration', 'tissue_repair', 'immune_response']
+        
+    async def analyze_vitality_system(self, patient_data: Dict) -> ElementalDiagnosis:
+        """Comprehensive Wood element vitality analysis"""
+        analysis_results = {
+            'vitality_score': await self._calculate_vitality_score(patient_data),
+            'detox_efficiency': await self._assess_detoxification(patient_data),
+            'growth_capacity': await self._evaluate_growth_potential(patient_data),
+            'stress_impact': await self._analyze_stress_effects(patient_data)
+        }
+        
+        # Determine Wood element imbalance
+        imbalance_level = await self._calculate_wood_imbalance(analysis_results)
+        symptoms = await self._identify_wood_symptoms(patient_data)
+        recommendations = await self._generate_wood_recommendations(analysis_results)
+        
+        return ElementalDiagnosis(
+            element=ElementalSystem.WOOD,
+            status=self._determine_health_status(imbalance_level),
+            imbalance_level=imbalance_level,
+            symptoms=symptoms,
+            recommendations=recommendations,
+            confidence=await self._calculate_confidence(analysis_results)
+        )
+    
+    async def _calculate_vitality_score(self, patient_data: Dict) -> float:
+        """Calculate overall vitality score (0.0 - 1.0)"""
+        vitality_indicators = [
+            patient_data.get('energy_level', 0.5),
+            patient_data.get('sleep_quality', 0.5),
+            patient_data.get('physical_activity', 0.5),
+            1.0 - patient_data.get('fatigue_level', 0.5)
+        ]
+        return sum(vitality_indicators) / len(vitality_indicators)
+    
+    async def _identify_wood_symptoms(self, patient_data: Dict) -> List[str]:
+        """Identify symptoms related to Wood element imbalance"""
+        wood_symptoms = []
+        symptoms = patient_data.get('symptoms', [])
+        
+        wood_related_symptoms = {
+            'fatigue', 'irritability', 'eye_problems', 'muscle_tension',
+            'headaches', 'digestive_issues', 'mood_swings', 'poor_sleep'
+        }
+        
+        for symptom in symptoms:
+            if any(wood_symptom in symptom.lower() for wood_symptom in wood_related_symptoms):
+                wood_symptoms.append(symptom)
+                
+        return wood_symptoms
+
+# src/safeway_guardian/elements/fire_circulation.py
+"""
+🔥 FIRE ELEMENT - Circulation & Warmth System
+Heart/Small Intestine function, circulation, mental health analysis
+"""
+
+class FireCirculationSystem:
+    """🔥 FIRE: Circulation, warmth, and mental health system analysis"""
+    
+    def __init__(self):
+        self.circulation_metrics = ['heart_rate', 'blood_pressure', 'capillary_refill']
+        self.mental_indicators = ['mood_stability', 'cognitive_function', 'stress_levels']
+        self.warmth_factors = ['body_temperature', 'extremity_warmth', 'metabolic_rate']
+        
+    async def analyze_circulation_system(self, patient_data: Dict) -> ElementalDiagnosis:
+        """Comprehensive Fire element circulation analysis"""
+        analysis_results = {
+            'circulation_efficiency': await self._assess_circulation(patient_data),
+            'mental_clarity': await self._evaluate_mental_health(patient_data),
+            'metabolic_balance': await self._analyze_metabolism(patient_data),
+            'emotional_stability': await self._assess_emotional_state(patient_data)
+        }
+        
+        imbalance_level = await self._calculate_fire_imbalance(analysis_results)
+        symptoms = await self._identify_fire_symptoms(patient_data)
+        recommendations = await self._generate_fire_recommendations(analysis_results)
+        
+        return ElementalDiagnosis(
+            element=ElementalSystem.FIRE,
+            status=self._determine_health_status(imbalance_level),
+            imbalance_level=imbalance_level,
+            symptoms=symptoms,
+            recommendations=recommendations,
+            confidence=await self._calculate_confidence(analysis_results)
+        )
+    
+    async def _assess_circulation(self, patient_data: Dict) -> float:
+        """Assess cardiovascular and circulatory health"""
+        vitals = patient_data.get('vitals', {})
+        
+        circulation_score = 0.0
+        if 'heart_rate' in vitals:
+            # Optimal heart rate range assessment
+            hr = vitals['heart_rate']
+            if 60 <= hr <= 100:  # Normal resting heart rate
+                circulation_score += 0.5
+            else:
+                circulation_score += 0.2
+                
+        if 'blood_pressure' in vitals:
+            bp = vitals['blood_pressure']
+            systolic, diastolic = bp
+            if 90 <= systolic <= 120 and 60 <= diastolic <= 80:
+                circulation_score += 0.5
+                
+        return circulation_score
+
+# src/safeway_guardian/elements/earth_digestion.py
+"""
+🌍 EARTH ELEMENT - Digestion & Stability System
+Spleen/Stomach function, digestion, nutrient absorption analysis
+"""
+
+class EarthDigestionSystem:
+    """🌍 EARTH: Digestion, stability, and nutritional system analysis"""
+    
+    def __init__(self):
+        self.digestion_metrics = ['appetite', 'bowel_regularity', 'nutrient_absorption']
+        self.stability_indicators = ['weight_stability', 'energy_consistency', 'mental_grounding']
+        self.nutrition_factors = ['diet_quality', 'supplement_use', 'hydration_status']
+        
+    async def analyze_digestion_system(self, patient_data: Dict) -> ElementalDiagnosis:
+        """Comprehensive Earth element digestion analysis"""
+        analysis_results = {
+            'digestive_efficiency': await self._assess_digestion(patient_data),
+            'nutritional_status': await self._evaluate_nutrition(patient_data),
+            'metabolic_stability': await self._analyze_metabolic_balance(patient_data),
+            'gut_health': await self._assess_gut_microbiome(patient_data)
+        }
+        
+        imbalance_level = await self._calculate_earth_imbalance(analysis_results)
+        symptoms = await self._identify_earth_symptoms(patient_data)
+        recommendations = await self._generate_earth_recommendations(analysis_results)
+        
+        return ElementalDiagnosis(
+            element=ElementalSystem.EARTH,
+            status=self._determine_health_status(imbalance_level),
+            imbalance_level=imbalance_level,
+            symptoms=symptoms,
+            recommendations=recommendations,
+            confidence=await self._calculate_confidence(analysis_results)
+        )
+
+# src/safeway_guardian/elements/metal_respiration.py
+"""
+🔒 METAL ELEMENT - Respiration & Immunity System
+Lungs/Large Intestine function, respiration, immunity analysis
+"""
+
+class MetalRespirationSystem:
+    """🔒 METAL: Respiration, immunity, and elimination system analysis"""
+    
+    def __init__(self):
+        self.respiration_metrics = ['respiratory_rate', 'lung_capacity', 'oxygen_saturation']
+        self.immunity_indicators = ['immune_response', 'infection_frequency', 'allergy_status']
+        self.elimination_factors = ['bowel_regularity', 'skin_health', 'detox_efficiency']
+        
+    async def analyze_respiration_system(self, patient_data: Dict) -> ElementalDiagnosis:
+        """Comprehensive Metal element respiration analysis"""
+        analysis_results = {
+            'respiratory_efficiency': await self._assess_respiration(patient_data),
+            'immune_function': await self._evaluate_immunity(patient_data),
+            'elimination_capacity': await self._analyze_elimination(patient_data),
+            'boundary_integrity': await self._assess_immune_barriers(patient_data)
+        }
+        
+        imbalance_level = await self._calculate_metal_imbalance(analysis_results)
+        symptoms = await self._identify_metal_symptoms(patient_data)
+        recommendations = await self._generate_metal_recommendations(analysis_results)
+        
+        return ElementalDiagnosis(
+            element=ElementalSystem.METAL,
+            status=self._determine_health_status(imbalance_level),
+            imbalance_level=imbalance_level,
+            symptoms=symptoms,
+            recommendations=recommendations,
+            confidence=await self._calculate_confidence(analysis_results)
+        )
+
+# src/safeway_guardian/elements/water_hydration.py
+"""
+💧 WATER ELEMENT - Hydration & Foundation System
+Kidneys/Bladder function, hydration, foundational health analysis
+"""
+
+class WaterHydrationSystem:
+    """💧 WATER: Hydration, energy storage, and foundational health analysis"""
+    
+    def __init__(self):
+        self.hydration_metrics = ['fluid_intake', 'urine_output', 'skin_turgor']
+        self.energy_indicators = ['adrenal_function', 'stress_response', 'energy_reserves']
+        self.foundation_factors = ['bone_health', 'joint_health', 'constitutional_strength']
+        
+    async def analyze_hydration_system(self, patient_data: Dict) -> ElementalDiagnosis:
+        """Comprehensive Water element hydration analysis"""
+        analysis_results = {
+            'hydration_status': await self._assess_hydration(patient_data),
+            'energy_reserves': await self._evaluate_energy_storage(patient_data),
+            'foundational_health': await self._analyze_constitutional_health(patient_data),
+            'fluid_balance': await self._assess_electrolyte_balance(patient_data)
+        }
+        
+        imbalance_level = await self._calculate_water_imbalance(analysis_results)
+        symptoms = await self._identify_water_symptoms(patient_data)
+        recommendations = await self._generate_water_recommendations(analysis_results)
+        
+        return ElementalDiagnosis(
+            element=ElementalSystem.WATER,
+            status=self._determine_health_status(imbalance_level),
+            imbalance_level=imbalance_level,
+            symptoms=symptoms,
+            recommendations=recommendations,
+            confidence=await self._calculate_confidence(analysis_results)
+        )
