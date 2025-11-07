@@ -1,0 +1,11 @@
+# Run comprehensive medical tests
+pytest tests/test_diagnostic_core.py
+
+# Test specific elemental systems
+pytest tests/test_elemental_health.py
+
+# Patient safety validation
+pytest tests/test_patient_safety.py
+
+# Clinical scenario testing
+python -m safeway_guardian.testing.clinical_scenarios
