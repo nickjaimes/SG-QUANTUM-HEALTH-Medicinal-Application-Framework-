@@ -1,0 +1,4 @@
+from safeway_guardian.examples import preventive_care
+
+preventive_analyst = preventive_care.PreventiveHealthAnalyst()
+risk_assessment = preventive_analyst.calculate_health_risks(patient_data)
