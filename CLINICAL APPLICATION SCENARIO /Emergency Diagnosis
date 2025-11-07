@@ -1,0 +1,4 @@
+from safeway_guardian.examples import emergency_diagnosis
+
+emergency_analyzer = emergency_diagnosis.EmergencyDiagnostic()
+critical_assessment = emergency_analyzer.assess_emergency_patient(patient_data)
