@@ -1,0 +1,4 @@
+from safeway_guardian.examples import chronic_disease
+
+chronic_manager = chronic_disease.ChronicDiseaseManager()
+management_plan = chronic_manager.create_treatment_plan(patient_data, 'diabetes')
